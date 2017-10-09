@@ -9,6 +9,8 @@ exports = module.exports = {
 		var doc = new parser().parseFromString(template);
 		var root = doc.childNodes[1];
 
+		const keys = [];
+
 		content.toString().split('\n').forEach(function(line, i){
 			line = line.replace(/\r/, '');
 			const founded = line.match(/^(.*):=(.*)$/);
@@ -18,13 +20,29 @@ exports = module.exports = {
 				return;
 			}
 
-			var child = doc.createElement('string');
 			let key = founded[1];
 			let value = founded[2];
+
+			if (keys.indexOf(key) !== -1)
+			{
+				console.log('duplicate key', key, 'value', value, 'skipping');
+				return;
+			} else{
+				keys.push(key);
+			}
+
+			var child = doc.createElement('string');
 			
 			//@see https://developer.android.com/guide/topics/resources/string-resource.html#escaping_quotes
 			value = value.replace(/'/g, "\\'");
 			value = value.replace(/"/g, '\\"');
+
+			const stringFormattingFounded = value.match(/%@/);
+			if (stringFormattingFounded !== null){
+				// avoid Error:(760) Multiple substitutions specified in non-positional format; did you mean to add the formatted="false" attribute? https://stackoverflow.com/a/12627660
+				value = value.replace(/\%@/g, '\%s');
+				child.setAttribute('formatted', false);
+			}
 
 			child.setAttribute('name', key);
 			child.appendChild(doc.createTextNode(value));
