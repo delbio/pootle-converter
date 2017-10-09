@@ -89,3 +89,10 @@
 "x-failed-attempts"="%d failed attempts";
 "yes"="Yes";
 "you-cant-move-to-the-same-folder"="You can't move to the same folder";
+
+"left_space_before_equal" ="ok";
+"rigth_space_after_equal"= "ok";
+"no_space_around_equal"="ok";
+"key with space into key" = "ko";
+"key_with_space_around_equal" = "ok";
+"value-with-special-character"="hi i'm delbio";

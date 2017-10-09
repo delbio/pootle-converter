@@ -12,15 +12,23 @@ exports = module.exports = {
 		content.toString().split('\n').forEach(function(line, i){
 			line = line.replace(/\r/, '');
 			const founded = line.match(/^(.*)=(.*)$/);
-			if (founded !== null){
-				var child = doc.createElement('string');
-				child.setAttribute('name', founded[1]);
-				child.appendChild(doc.createTextNode(founded[2]));
-
-				root.appendChild(child);
-			} else {
+			
+			if (founded === null){
 				console.log(i, line, founded);
+				return;
 			}
+
+			var child = doc.createElement('string');
+			let key = founded[1];
+			let value = founded[2];
+			
+			//@see https://developer.android.com/guide/topics/resources/string-resource.html#escaping_quotes
+			value = value.replace(/'/, "\\'");
+			value = value.replace(/"/, '\\"');
+
+			child.setAttribute('name', key);
+			child.appendChild(doc.createTextNode(value));
+			root.appendChild(child);
 		});
 
 		content = new serializer().serializeToString(doc);
