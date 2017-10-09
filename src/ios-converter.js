@@ -7,7 +7,7 @@ exports = module.exports = {
 			line = line.replace(/\r/, '');
 			const founded = line.match(/^(.*)=(.*)$/);
 			if (founded !== null){
-				returnContent += '"'+founded[1]+'"="'+founded[2]+'";\n';
+				returnContent += '"'+founded[1]+'":="'+founded[2]+'";\n';
 			} else {
 				console.log(i, line, founded);
 			}
@@ -22,7 +22,7 @@ exports = module.exports = {
         let returnContent = '';
 		content.toString().split('\n').forEach(function(line, i){
 			if (/^"(.*)"\s*=\s*"(.*)";$/m.test(line)){
-                line = line.replace(/"\s*=\s*"/g, '=');
+                line = line.replace(/"\s*=\s*"/g, ':=');
                 line = line.replace(/(^"|";$)/mg, '');
                 returnContent += line + '\n';
             }

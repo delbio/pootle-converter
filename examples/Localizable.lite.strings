@@ -4,3 +4,4 @@
 "key with space into key" = "ko";
 "key_with_space_around_equal" = "ok";
 "value-with-special-character"="hi i'm delbio by'e";
+"EMAIL_TEXT_NEW" = "Hello,<br>Here I am sending you the photo of the room that I have augmented with the App: <a href='%@'>%@</a>.<br>Project contains:";

@@ -11,7 +11,7 @@ exports = module.exports = {
 
 		content.toString().split('\n').forEach(function(line, i){
 			line = line.replace(/\r/, '');
-			const founded = line.match(/^(.*)=(.*)$/);
+			const founded = line.match(/^(.*):=(.*)$/);
 			
 			if (founded === null){
 				console.log(i, line, founded);
@@ -56,7 +56,7 @@ exports = module.exports = {
 			}
 
 			result += line.getAttribute('name');
-			result += '=';
+			result += ':=';
 			result += line.textContent;
 		}
 
