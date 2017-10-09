@@ -22,7 +22,6 @@ exports = module.exports = {
         let returnContent = '';
 		content.toString().split('\n').forEach(function(line, i){
 			if (/^"(.*)"\s*=\s*"(.*)";$/m.test(line)){
-                console.log(line);
                 line = line.replace(/"\s*=\s*"/g, '=');
                 line = line.replace(/(^"|";$)/mg, '');
                 returnContent += line + '\n';
