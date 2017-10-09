@@ -3,4 +3,4 @@
 "no_space_around_equal"="ok";
 "key with space into key" = "ko";
 "key_with_space_around_equal" = "ok";
-"value-with-special-character"="hi i'm delbio";
+"value-with-special-character"="hi i'm delbio by'e";

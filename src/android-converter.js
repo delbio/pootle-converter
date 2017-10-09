@@ -23,8 +23,8 @@ exports = module.exports = {
 			let value = founded[2];
 			
 			//@see https://developer.android.com/guide/topics/resources/string-resource.html#escaping_quotes
-			value = value.replace(/'/, "\\'");
-			value = value.replace(/"/, '\\"');
+			value = value.replace(/'/g, "\\'");
+			value = value.replace(/"/g, '\\"');
 
 			child.setAttribute('name', key);
 			child.appendChild(doc.createTextNode(value));
