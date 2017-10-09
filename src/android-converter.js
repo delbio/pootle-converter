@@ -14,8 +14,8 @@ exports = module.exports = {
 			const founded = line.match(/^(.*)=(.*)$/);
 			if (founded !== null){
 				var child = doc.createElement('string');
-				child.setAttribute('name', founded[0]);
-				child.appendChild(doc.createTextNode(founded[1]));
+				child.setAttribute('name', founded[1]);
+				child.appendChild(doc.createTextNode(founded[2]));
 
 				root.appendChild(child);
 			} else {
